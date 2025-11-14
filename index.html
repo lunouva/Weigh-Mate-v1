@@ -19,16 +19,25 @@
     </div>
     <div class="badge" id="jsBadge">JS: not ready</div>
     <nav class="tabs">
-      <button class="tab-btn active" data-tab="weigh" id="tabWeighBtn">Weigh</button>
-      <button class="tab-btn" data-tab="reports" id="tabReportsBtn">Reports</button>
-      <button class="tab-btn" data-tab="settings" id="tabSettingsBtn">Settings</button>
+      <button class="tab-btn active" data-tab="weigh" id="tabWeighBtn">
+        <span class="tab-icon">⌂</span>
+        <span class="tab-label">Home</span>
+      </button>
+      <button class="tab-btn" data-tab="reports" id="tabReportsBtn">
+        <span class="tab-icon">▤</span>
+        <span class="tab-label">Reports</span>
+      </button>
+      <button class="tab-btn" data-tab="settings" id="tabSettingsBtn">
+        <span class="tab-icon">⚙</span>
+        <span class="tab-label">Settings</span>
+      </button>
     </nav>
   </header>
 
   <main class="container">
     <section id="tab-weigh" class="tab active">
       <div class="card">
-        <h2>New Weigh-In</h2>
+        <h2>Home</h2>
 
         <label class="label">Employee</label>
         <div class="row">
@@ -64,7 +73,7 @@
 
     <section id="tab-reports" class="tab">
       <div class="card">
-        <h2>Daily Report</h2>
+        <h2>Reports</h2>
         <div class="row">
           <label class="label" for="reportDate">Pick a date</label>
           <input id="reportDate" class="input" type="date" placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}">
@@ -87,7 +96,7 @@
 
     <section id="tab-settings" class="tab">
       <div class="card">
-        <h2>Targets, Theme &amp; Employees</h2>
+        <h2>Settings</h2>
         <div class="grid">
           <div><label class="label">Kids target (oz)</label><input id="tKids" class="input" type="number" step="0.1"></div>
           <div><label class="label">Like It target (oz)</label><input id="tLike" class="input" type="number" step="0.1"></div>
