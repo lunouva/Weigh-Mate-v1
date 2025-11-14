@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WeightMate — v3.1 PWA (Legacy-safe)</title>
+  <meta name="theme-color" content="#111827">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">WeightMate</div>
+    <div class="badge" id="jsBadge">JS: not ready</div>
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="weigh" id="tabWeighBtn">Weigh</button>
+      <button class="tab-btn" data-tab="reports" id="tabReportsBtn">Reports</button>
+      <button class="tab-btn" data-tab="settings" id="tabSettingsBtn">Settings</button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="tab-weigh" class="tab active">
+      <div class="card">
+        <h2>New Weigh-In</h2>
+
+        <label class="label">Employee</label>
+        <div class="row">
+          <select id="employeeSelect" class="input grow"></select>
+          <button class="btn" id="addEmployeeBtn">+ Add</button>
+        </div>
+
+        <label class="label">Size</label>
+        <div class="size-group" id="sizeGroup">
+          <label class="size-pill"><input type="radio" name="size" value="kids" checked> Kids</label>
+          <label class="size-pill"><input type="radio" name="size" value="like"> Like It</label>
+          <label class="size-pill"><input type="radio" name="size" value="love"> Love It</label>
+          <label class="size-pill"><input type="radio" name="size" value="gh"> Gotta Have It</label>
+        </div>
+
+        <div class="row">
+          <div class="input grow">Target: <span id="targetOz">—</span> oz</div>
+          <div class="input grow">Allowed variance: <span id="varianceOz">—</span> oz</div>
+        </div>
+
+        <label class="label">Actual Weight (oz)</label>
+        <input id="actualInput" class="input" type="number" step="0.1" inputmode="decimal" placeholder="e.g., 3.0" />
+
+        <div class="row">
+          <button class="btn primary grow" id="checkBtn">Check</button>
+          <button class="btn" id="resetBtn">Reset</button>
+        </div>
+
+        <div id="result" class="result" style="display:none"></div>
+        <div class="hint">Retry until within the variance band.</div>
+      </div>
+    </section>
+
+    <section id="tab-reports" class="tab">
+      <div class="card">
+        <h2>Daily Report</h2>
+        <div class="row">
+          <label class="label" for="reportDate">Pick a date</label>
+          <input id="reportDate" class="input" type="date" placeholder="YYYY-MM-DD" pattern="\d{4}-\d{2}-\d{2}">
+          <button class="btn" id="reportGoBtn">Load</button>
+          <button class="btn" id="exportCsvDayBtn">Export CSV (day)</button>
+        </div>
+        <div id="todaySummary" class="hint"></div>
+        <table class="table" id="logTable">
+          <thead>
+            <tr><th>Time</th><th>Emp</th><th>Size</th><th>Actual</th><th>Target</th><th>Δ (oz)</th><th>Status</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="row">
+          <button class="btn" id="exportCsvBtn">Export CSV (all)</button>
+          <button class="btn danger" id="clearDayBtn">Clear This Day</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-settings" class="tab">
+      <div class="card">
+        <h2>Targets, Theme & Employees</h2>
+        <div class="grid">
+          <div><label class="label">Kids target (oz)</label><input id="tKids" class="input" type="number" step="0.1"></div>
+          <div><label class="label">Like It target (oz)</label><input id="tLike" class="input" type="number" step="0.1"></div>
+          <div><label class="label">Love It target (oz)</label><input id="tLove" class="input" type="number" step="0.1"></div>
+          <div><label class="label">Gotta Have It target (oz)</label><input id="tGhi" class="input" type="number" step="0.1"></div>
+          <div><label class="label">Allowed variance (± oz)</label><input id="tVar" class="input" type="number" step="0.1"></div>
+          <div><label class="label">Theme</label>
+            <select id="themeSelect" class="input"><option value="dark">Dark</option><option value="light">Light</option></select>
+          </div>
+        </div>
+        <div class="row">
+          <button class="btn primary" id="saveSettingsBtn">Save</button>
+          <button class="btn" id="resetDefaultsBtn">Reset Defaults</button>
+          <button class="btn" id="forceRefreshBtn" title="Reload PWA files">Force Refresh</button>
+        </div>
+
+        <div class="row">
+          <input id="empNameInput" class="input grow" placeholder="New employee name">
+          <button class="btn" id="empAddBtn">Add</button>
+        </div>
+        <div id="empList" class="row" style="flex-wrap:wrap"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">WeightMate v3.1 PWA • Legacy-safe</footer>
+  <div id="error"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
