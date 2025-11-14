@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>WeightMate — v3.1 PWA (Legacy-safe)</title>
+  <title>WeightMate &ndash; v3.1 PWA (Legacy-safe)</title>
   <meta name="theme-color" content="#111827">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -14,7 +13,10 @@
 </head>
 <body>
   <header class="topbar">
-    <div class="brand">WeightMate</div>
+    <div class="brand">
+      <span class="brand-title">WeightMate</span>
+      <span class="brand-subtitle">Portion control dashboard</span>
+    </div>
     <div class="badge" id="jsBadge">JS: not ready</div>
     <nav class="tabs">
       <button class="tab-btn active" data-tab="weigh" id="tabWeighBtn">Weigh</button>
@@ -43,8 +45,8 @@
         </div>
 
         <div class="row">
-          <div class="input grow">Target: <span id="targetOz">—</span> oz</div>
-          <div class="input grow">Allowed variance: <span id="varianceOz">—</span> oz</div>
+          <div class="input grow">Target: <span id="targetOz">&ndash;</span> oz</div>
+          <div class="input grow">Allowed variance: <span id="varianceOz">&ndash;</span> oz</div>
         </div>
 
         <label class="label">Actual Weight (oz)</label>
@@ -72,7 +74,7 @@
         <div id="todaySummary" class="hint"></div>
         <table class="table" id="logTable">
           <thead>
-            <tr><th>Time</th><th>Emp</th><th>Size</th><th>Actual</th><th>Target</th><th>Δ (oz)</th><th>Status</th></tr>
+            <tr><th>Time</th><th>Emp</th><th>Size</th><th>Actual</th><th>Target</th><th>&plusmn; (oz)</th><th>Status</th></tr>
           </thead>
           <tbody></tbody>
         </table>
@@ -85,13 +87,13 @@
 
     <section id="tab-settings" class="tab">
       <div class="card">
-        <h2>Targets, Theme & Employees</h2>
+        <h2>Targets, Theme &amp; Employees</h2>
         <div class="grid">
           <div><label class="label">Kids target (oz)</label><input id="tKids" class="input" type="number" step="0.1"></div>
           <div><label class="label">Like It target (oz)</label><input id="tLike" class="input" type="number" step="0.1"></div>
           <div><label class="label">Love It target (oz)</label><input id="tLove" class="input" type="number" step="0.1"></div>
           <div><label class="label">Gotta Have It target (oz)</label><input id="tGhi" class="input" type="number" step="0.1"></div>
-          <div><label class="label">Allowed variance (± oz)</label><input id="tVar" class="input" type="number" step="0.1"></div>
+          <div><label class="label">Allowed variance (&plusmn; oz)</label><input id="tVar" class="input" type="number" step="0.1"></div>
           <div><label class="label">Theme</label>
             <select id="themeSelect" class="input"><option value="dark">Dark</option><option value="light">Light</option></select>
           </div>
@@ -111,7 +113,7 @@
     </section>
   </main>
 
-  <footer class="footer">WeightMate v3.1 PWA • Legacy-safe</footer>
+  <footer class="footer">WeightMate v3.1 PWA &ndash; Legacy-safe</footer>
   <div id="error"></div>
 
   <script src="app.js"></script>
